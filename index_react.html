@@ -56,5 +56,14 @@
   <div id="root" />
 </body>
 <script type="text/javascript">
- </script>
+  const rootElement = document.getElementById("root");
+
+  const BodyTitle = React.createElement(
+    "h1",
+    {},
+    "Kurs Reacta - Tydzień 2"
+  );
+
+  ReactDOM.render(BodyTitle, rootElement);
+</script>
 </html>
