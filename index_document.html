@@ -101,6 +101,9 @@
     const domElementProgressBar = document.createElement("div");
     domElementProgressBar.className = "ProgressBar";
 
+      const domElementFillBar = document.createElement("div");
+      domElementFillBar.style = "width: 60%";
+
   rootElement.append(domElementH1Body, domElementHr, domElementApp, domElementTimebox);
   
     //Create App section
@@ -117,5 +120,5 @@
     domElementTimebox.appendChild(domElementH1Timebox);
     domElementTimebox.appendChild(domElementH2Timebox);
     domElementTimebox.appendChild(domElementProgressBar);
-    
+    domElementProgressBar.appendChild(domElementFillBar);
 </script>
