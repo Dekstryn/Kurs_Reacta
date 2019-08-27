@@ -63,7 +63,22 @@
     {},
     "Kurs Reacta - Tydzień 2"
   );
+  const hr = React.createElement(
+    "hr",
+    {},
+  );
+  const App = React.createElement(
+    "div",
+    {className: "TimeboxEditor inactive"}
+  );
 
-  ReactDOM.render(BodyTitle, rootElement);
+  const container = React.createElement(
+    "div",
+    {},
+    BodyTitle,
+    hr,
+    App
+  );
+  ReactDOM.render(container, rootElement);
 </script>
 </html>
