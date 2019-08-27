@@ -58,7 +58,8 @@
 <script type="text/javascript">
   const rootElement = document.getElementById("root");
 
-  const domElementBr = document.createElement("br");
+  const domElementBr1 = document.createElement("br");
+  const domElementBr2 = document.createElement("br");
 
   const domElementH1 = document.createElement("h1");
   domElementH1.textContent = "Kurs Reacta - Tydzień 2"
@@ -83,13 +84,18 @@
     domElementInput2.type = "number";
     domElementLabel2.textContent = "Ile minut?";
 
+    const domElementButton1 = document.createElement("button");
+    domElementButton1.textContent = "Zacznij";
+    domElementButton1.className = "disable";
 
 
   rootElement.append(domElementH1, domElementHr, domElementApp);
   domElementApp.appendChild(domElementTimeboxEditor);
   domElementTimeboxEditor.appendChild(domElementLabel1);
   domElementLabel1.append(domElementInput1);
-  domElementTimeboxEditor.appendChild(domElementBr);
+  domElementTimeboxEditor.appendChild(domElementBr1);
   domElementTimeboxEditor.appendChild(domElementLabel2);
   domElementLabel2.append(domElementInput2);
+  domElementTimeboxEditor.appendChild(domElementBr2);
+  domElementTimeboxEditor.appendChild(domElementButton1);
 </script>
