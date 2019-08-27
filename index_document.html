@@ -58,6 +58,8 @@
 <script type="text/javascript">
   const rootElement = document.getElementById("root");
 
+  const domElementBr = document.createElement("br");
+
   const domElementH1 = document.createElement("h1");
   domElementH1.textContent = "Kurs Reacta - Tydzień 2"
 
@@ -67,6 +69,25 @@
     const domElementTimeboxEditor = document.createElement("div");
     domElementTimeboxEditor.className = "TimeboxEditor, inactive"
 
+    const domElementLabel1 = document.createElement("label");
+    const domElementInput1 = document.createElement("input");
+    domElementInput1.value = "Uczę się skrótów klawiszowych";
+    domElementInput1.type = "text";
+    domElementLabel1.textContent = "Co robisz?";
+
+    const domElementLabel2 = document.createElement("label");
+    const domElementInput2 = document.createElement("input");
+    domElementInput2.value = "25";
+    domElementInput2.type = "number";
+    domElementLabel2.textContent = "Ile minut?";
+
+
+
   rootElement.append(domElementH1, domElementApp);
   domElementApp.appendChild(domElementTimeboxEditor);
+  domElementTimeboxEditor.appendChild(domElementLabel1);
+  domElementLabel1.append(domElementInput1);
+  domElementTimeboxEditor.appendChild(domElementBr);
+  domElementTimeboxEditor.appendChild(domElementLabel2);
+  domElementLabel2.append(domElementInput2);
 </script>
