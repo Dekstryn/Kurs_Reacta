@@ -79,6 +79,14 @@
 const rootElement = document.getElementById("root");
 const domElement = document.createElement("h2");
 domElement.className = "Clock"
-domElement.append(domElement);
+domElement.textContent = "Pozostało 10:20"
+// rootElement.append(domElement);
+
+const element = React.createElement(
+  "h2",
+  {className: "Clock"},
+  "Pozostało 15:25"
+);
+ReactDOM.render(element, rootElement);
 </script>
 </html>
