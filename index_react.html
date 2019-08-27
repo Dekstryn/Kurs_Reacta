@@ -67,17 +67,108 @@
     "hr",
     {},
   );
-  const App = React.createElement(
+  
+    const br1 = React.createElement(
+      "br",
+      {}
+    );
+
+    const button1 = React.createElement(
+      "button",
+      {className: "disable"},
+      "Zacznij"
+    );
+    
+    const input1 = React.createElement(
+      "input",
+      {type: "text", value:"Uczę się skrótów klawiszowych"}
+    );
+
+    const label1 = React.createElement(
+      "label",
+      {},
+      "Co robisz?",
+      input1,
+      br1
+    );
+
+    const input2 = React.createElement(
+      "input",
+      {type: "number", value:"25"}
+    );
+
+    const label2 = React.createElement(
+      "label",
+      {},
+      "Ile minut?",
+      input2,
+      br1
+    );
+    const App = React.createElement(
     "div",
-    {className: "TimeboxEditor inactive"}
+    {className: "TimeboxEditor inactive"},
+    label1, 
+    label2,
+    button1
   );
+
+  const TimeboxH1 = React.createElement(
+    "h1",
+    {},
+    "Uczę się skrótów klawiszowych"
+  );
+  
+  const TimeboxH2 = React.createElement(
+    "h2",
+    {},
+    "Pozostało 13:28"
+  );
+
+  const FillBar = React.createElement(
+    "div",
+    //{style = "width: 60%"}
+  );
+  const ProgressBar = React.createElement(
+    "div",
+    {className: "ProgressBar"},
+    FillBar
+  );
+  const Button2 =React.createElement(
+    "button",
+    {className: "disable"},
+    "Start"
+  );
+  
+  const Button3 =React.createElement(
+    "button",
+    {},
+    "Reset"
+  );
+  const Button4 =React.createElement(
+    "button",
+    {},
+    "Pause"
+  );
+  const Timebox = React.createElement(
+    "div",
+    {className: "Timebox"},
+    TimeboxH1,
+    TimeboxH2,
+    ProgressBar,
+    Button2,
+    Button3,
+    Button4,
+    br1,
+    "Liczba przerw: 2"
+  )
 
   const container = React.createElement(
     "div",
-    {},
+    {className: "App"},
     BodyTitle,
     hr,
-    App
+    App,
+    Timebox
   );
   ReactDOM.render(container, rootElement);
 </script>
