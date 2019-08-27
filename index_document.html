@@ -61,8 +61,8 @@
   const domElementBr1 = document.createElement("br");
   const domElementBr2 = document.createElement("br");
 
-  const domElementH1 = document.createElement("h1");
-  domElementH1.textContent = "Kurs Reacta - Tydzień 2"
+  const domElementH1Body = document.createElement("h1");
+  domElementH1Body.textContent = "Kurs Reacta - Tydzień 2"
 
   const domElementHr = document.createElement("hr");
 
@@ -88,14 +88,25 @@
     domElementButton1.textContent = "Zacznij";
     domElementButton1.className = "disable";
 
+  const domElementTimebox = document.createElement("div");
+  domElementTimebox.className = "Timebox"
+  
+    const domElementH1Timebox = document.createElement("h1");
+    domElementH1Timebox.textContent = "Uczę się skrótów klawiszowych"
 
-  rootElement.append(domElementH1, domElementHr, domElementApp);
-  domElementApp.appendChild(domElementTimeboxEditor);
-  domElementTimeboxEditor.appendChild(domElementLabel1);
-  domElementLabel1.append(domElementInput1);
-  domElementTimeboxEditor.appendChild(domElementBr1);
-  domElementTimeboxEditor.appendChild(domElementLabel2);
-  domElementLabel2.append(domElementInput2);
-  domElementTimeboxEditor.appendChild(domElementBr2);
-  domElementTimeboxEditor.appendChild(domElementButton1);
+
+  rootElement.append(domElementH1Body, domElementHr, domElementApp, domElementTimebox);
+  
+    //Create App section
+    domElementApp.appendChild(domElementTimeboxEditor);
+    domElementTimeboxEditor.appendChild(domElementLabel1);
+    domElementLabel1.append(domElementInput1);
+    domElementTimeboxEditor.appendChild(domElementBr1);
+    domElementTimeboxEditor.appendChild(domElementLabel2);
+    domElementLabel2.append(domElementInput2);
+    domElementTimeboxEditor.appendChild(domElementBr2);
+    domElementTimeboxEditor.appendChild(domElementButton1);
+
+    //Create Timebox section
+    domElementTimebox.appendChild(domElementH1Timebox);
 </script>
