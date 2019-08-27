@@ -63,6 +63,8 @@
   const domElementH1 = document.createElement("h1");
   domElementH1.textContent = "Kurs Reacta - Tydzień 2"
 
+  const domElementHr = document.createElement("hr");
+
   const domElementApp = document.createElement("div");
   domElementApp.className = "App"
 
@@ -83,7 +85,7 @@
 
 
 
-  rootElement.append(domElementH1, domElementApp);
+  rootElement.append(domElementH1, domElementHr, domElementApp);
   domElementApp.appendChild(domElementTimeboxEditor);
   domElementTimeboxEditor.appendChild(domElementLabel1);
   domElementLabel1.append(domElementInput1);
