@@ -98,6 +98,9 @@
     domElementH2Timebox.textContent = "Pozostało 13:28";
     domElementH2Timebox.className = "Clock";
 
+    const domElementProgressBar = document.createElement("div");
+    domElementProgressBar.className = "ProgressBar";
+
   rootElement.append(domElementH1Body, domElementHr, domElementApp, domElementTimebox);
   
     //Create App section
@@ -113,4 +116,6 @@
     //Create Timebox section
     domElementTimebox.appendChild(domElementH1Timebox);
     domElementTimebox.appendChild(domElementH2Timebox);
+    domElementTimebox.appendChild(domElementProgressBar);
+    
 </script>
