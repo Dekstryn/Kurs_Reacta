@@ -104,6 +104,19 @@
       const domElementFillBar = document.createElement("div");
       domElementFillBar.style = "width: 60%";
 
+    const domElementButton2 = document.createElement("button");
+    domElementButton2.textContent = "Start";
+    domElementButton2.className = "disable inactive";
+
+    const domElementButton3 = document.createElement("button");
+    domElementButton3.textContent = "Reset";
+
+    const domElementButton4 = document.createElement("button");
+    domElementButton4.textContent = "Pause";
+
+    const domElementp1 = document.createElement("p");
+    domElementp1.textContent = "Liczba przerw: 2";
+
   rootElement.append(domElementH1Body, domElementHr, domElementApp, domElementTimebox);
   
     //Create App section
@@ -121,4 +134,8 @@
     domElementTimebox.appendChild(domElementH2Timebox);
     domElementTimebox.appendChild(domElementProgressBar);
     domElementProgressBar.appendChild(domElementFillBar);
+    domElementTimebox.appendChild(domElementButton2);
+    domElementTimebox.appendChild(domElementButton3);
+    domElementTimebox.appendChild(domElementButton4);
+    domElementTimebox.appendChild(domElementp1);
 </script>
