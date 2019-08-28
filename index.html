@@ -76,9 +76,22 @@
   </div>
 </body>
 <script type="text/babel">
-const rootElement = document.getElementById("root");
 
-const element = (<h2 class = "Clock">Pozostało 13:28</h2>)
+  function Clock({hours = 5, minutes = 2, seconds = 48, miliseconds = 30}) {
+  
+    if (hours < 0)
+      {hours = 0}
+    else if (hours > 24)
+      {hours = 24}
+    else if (hours < 10)
+      {hours = "0" + hours}
+    
+    return <h2 className = "Clock"> Pozostało {hours}:{minutes}:{seconds}:{miliseconds}</h2>
+  }
+
+  const rootElement = document.getElementById("root");
+
+  const element = (<Clock />);
 ReactDOM.render(element, rootElement);
 </script>
 </html>
