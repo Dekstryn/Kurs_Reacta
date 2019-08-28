@@ -66,9 +66,6 @@
   <div class="Timebox">
     <h1>Uczę się skrótów klawiszowych</h1>
     <div id="root"></div>
-    <div class="ProgressBar">
-      <div style="width: 50%"></div>
-    </div>
     <button disabled>Start</button>
     <button>Reset</button>
     <button>Pause</button><br>
@@ -116,9 +113,14 @@
     return <h2 className = "Clock"> Pozostało {hours}:{minutes}:{seconds}:{miliseconds}</h2>
   }
 
-  const rootElement = document.getElementById("root");
+  function ProgressBar({ percent = 33}) {
+    return(
+      <div className="ProgressBar">
+        <div style={{width: `${percent}%`}}></div>
+      </div>
+    );
+  }
 
-  const element = (<Clock />);
-ReactDOM.render(element, rootElement);
+ReactDOM.render(<div><Clock />, <ProgressBar /></div>, document.getElementById("root"));
 </script>
 </html>
