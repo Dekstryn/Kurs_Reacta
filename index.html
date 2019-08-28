@@ -79,6 +79,7 @@
 
   function Clock({hours = 5, minutes = 2, seconds = 48, miliseconds = 30}) {
   
+  //Normalizing hours display
     if (hours < 0)
       {hours = 0}
     else if (hours > 24)
@@ -86,6 +87,14 @@
     else if (hours < 10)
       {hours = "0" + hours}
     
+  //Normalizing minutes display
+    if (minutes < 0)
+      {minutes = 0}
+    else if (minutes > 59)
+      {minutes = 59}
+    else if (minutes < 10)
+      {minutes = "0" + minutes}
+
     return <h2 className = "Clock"> Pozostało {hours}:{minutes}:{seconds}:{miliseconds}</h2>
   }
 
