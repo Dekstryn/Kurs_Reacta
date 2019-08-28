@@ -77,7 +77,7 @@
 </body>
 <script type="text/babel">
 
-  function Clock({hours = 5, minutes = 2, seconds = 48, miliseconds = 30}) {
+  function Clock({hours = 5, minutes = 2, seconds = 8, miliseconds = 30}) {
   
   //Normalizing hours display
     if (hours < 0)
@@ -94,6 +94,15 @@
       {minutes = 59}
     else if (minutes < 10)
       {minutes = "0" + minutes}
+
+  //Normalizing seconds display
+  if (seconds < 0)
+      {seconds = 0}
+    else if (seconds > 59)
+      {seconds = 59}
+    else if (seconds < 10)
+      {seconds = "0" + seconds}
+
 
     return <h2 className = "Clock"> Pozostało {hours}:{minutes}:{seconds}:{miliseconds}</h2>
   }
