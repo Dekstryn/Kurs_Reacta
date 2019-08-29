@@ -131,7 +131,7 @@
       super(props);
       this.state = {
         isRunning: true,
-        is Paused: false,
+        isPaused: false,
         pausesCount: 0
       }
     }
@@ -142,11 +142,11 @@
           <h1>Uczę się skrótów klawiszowych</h1>
           <Clock />
           <ProgressBar />
-          <button disabled>Start</button>
-          <button>Reset</button>
-          <button>Pause</button>
+          <button disabled = {isRunning}>Start</button>
+          <button disabled = {!isRunning}>Reset</button>
+          <button disabled = {!isRunning}>Pause</button>
           <br />
-          Liczna przerw: 2
+          Liczna przerw: {pausesCount}
         </div>
       )
     }
