@@ -134,6 +134,9 @@
         isPaused: false,
         pausesCount: 0
       }
+      this.handleStart = this.handleStart.bind(this)
+      this.handleStop = this.handleStop.bind(this)
+      this.togglePause = this.togglePause.bind(this)
     }
 
     handleStart(event) {
@@ -168,9 +171,9 @@
           <h1>Uczę się skrótów klawiszowych</h1>
           <Clock className={isPaused ? " inactive" : ""}/>
           <ProgressBar />
-          <button onClick={this.handleStart.bind(this)} disabled = {isRunning}>Start</button>
-          <button onClick={this.handleStop.bind(this)} disabled = {!isRunning}>Reset</button>
-          <button onClick={this.togglePause.bind(this)} disabled = {!isRunning}>{isPaused ? "Wznów" : "Pauza"}</button>
+          <button onClick={this.handleStart} disabled = {isRunning}>Start</button>
+          <button onClick={this.handleStop} disabled = {!isRunning}>Reset</button>
+          <button onClick={this.togglePause} disabled = {!isRunning}>{isPaused ? "Wznów" : "Pauza"}</button>
           <br />
           Liczna przerw: {pausesCount}
         </div>
