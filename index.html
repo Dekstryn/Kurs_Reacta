@@ -144,7 +144,7 @@
           <ProgressBar />
           <button disabled = {isRunning}>Start</button>
           <button disabled = {!isRunning}>Reset</button>
-          <button disabled = {!isRunning}>Pause</button>
+          <button disabled = {!isRunning}>{isPaused ? "Wznów" : "Pauza"}</button>
           <br />
           Liczna przerw: {pausesCount}
         </div>
