@@ -109,17 +109,17 @@
     )
   }
 
-  function ProgressBar({ percent = 33, fullPercent = 100, trackRemaining = false}) {
+  function ProgressBar({className = "", percent = 33, fullPercent = 100, trackRemaining = false}) {
     if (trackRemaining == false)
       {return(
-        <div className="ProgressBar">
+        <div className = {"ProgressBar" + className}>
           <div style={{width: `${percent}%`}}></div>
         </div>
       );
       }
     else if (trackRemaining == true)
       {return(
-        <div className="ProgressBar">
+        <div className = {"ProgressBar" + className}>
           <div style={{width: `calc(${fullPercent}% - ${percent}%)`, float: "right"}}></div>
         </div>
       );
@@ -135,21 +135,31 @@
         pausesCount: 0
       }
     }
+
+    handleStart(event) {
+      this.setState({
+        isRunning: true
+      })
+    }
+
     handleStop(event) {
       this.setState({
         isRunning: false,
         isPaused: false,
         pausesCount: 0
       })
-      }
-    togglePause(){
-      this.setState{
-        function(prevState){
-          return{
-            isPaused: !prevState.isPaused
+    }
+
+    togglePause() {
+      this.setState(
+        function(prevState) {
+          const isPaused = !prevState.isPaused;
+          return {
+            isPaused,
+            pausesCount: isPaused ? prevState.pausesCount + 1 : prevState.pausesCount,
           }
         }
-      }
+      )
     }
     render(){
       const {isPaused, isRunning, pausesCount} = this.state;
@@ -158,7 +168,7 @@
           <h1>Uczę się skrótów klawiszowych</h1>
           <Clock className={isPaused ? " inactive" : ""}/>
           <ProgressBar />
-          <button disabled = {isRunning}>Start</button>
+          <button onClick={this.handleStart.bind(this)} disabled = {isRunning}>Start</button>
           <button onClick={this.handleStop.bind(this)} disabled = {!isRunning}>Reset</button>
           <button onClick={this.togglePause.bind(this)} disabled = {!isRunning}>{isPaused ? "Wznów" : "Pauza"}</button>
           <br />
