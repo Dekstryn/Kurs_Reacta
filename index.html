@@ -60,7 +60,7 @@
 </body>
 <script type="text/babel">
 
-  function Clock({hours = 5, minutes = 2, seconds = 8, miliseconds = 300}) {
+  function Clock({className = "", hours = 5, minutes = 2, seconds = 8, miliseconds = 300}) {
   
   //Normalizing hours display
     if (hours < 0)
@@ -96,7 +96,7 @@
     else if (miliseconds < 100)
       {miliseconds = "0" + miliseconds}
 
-    return <h2 className = "Clock"> Pozostało {hours}:{minutes}:{seconds}:{miliseconds}</h2>
+    return <h2 className = {"Clock" + className}> Pozostało {hours}:{minutes}:{seconds}:{miliseconds}</h2>
   }
 
   function TimeboxEditor(){
@@ -130,7 +130,7 @@
     constructor(props) {
       super(props);
       this.state = {
-        isRunning: true,
+        isRunning: false,
         isPaused: false,
         pausesCount: 0
       }
@@ -142,17 +142,25 @@
         pausesCount: 0
       })
       }
-
+    togglePause(){
+      this.setState{
+        function(prevState){
+          return{
+            isPaused: !prevState.isPaused
+          }
+        }
+      }
+    }
     render(){
       const {isPaused, isRunning, pausesCount} = this.state;
       return(
         <div className="Timebox">
           <h1>Uczę się skrótów klawiszowych</h1>
-          <Clock />
+          <Clock className={isPaused ? " inactive" : ""}/>
           <ProgressBar />
           <button disabled = {isRunning}>Start</button>
           <button onClick={this.handleStop.bind(this)} disabled = {!isRunning}>Reset</button>
-          <button disabled = {!isRunning}>{isPaused ? "Wznów" : "Pauza"}</button>
+          <button onClick={this.togglePause.bind(this)} disabled = {!isRunning}>{isPaused ? "Wznów" : "Pauza"}</button>
           <br />
           Liczna przerw: {pausesCount}
         </div>
