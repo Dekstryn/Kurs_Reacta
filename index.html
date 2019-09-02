@@ -103,7 +103,7 @@
       return <h2 className = {"Clock" + className}> Pozostało {hours}:{minutes}:{seconds}</h2>
   }
 
-  class TimeboxEditor extends React.Component(){
+  class TimeboxEditor extends React.Component{
     state = {
       title: "Uczę się o kontrolowanych elementach",
       totalTimeInMinutes: 15
@@ -120,7 +120,7 @@
         <div className="TimeboxEditor">
           <label>Co robisz?<input disable={false} value={title} onChange={this.handleTitleChange} type="text" /></label><br />
           <label>Ile minut?<input disable={false} value={totalTimeInMinutes} onChange={this.handleTotalTimeInMinutesChange} type="number" /></label><br />
-          <button disabled>Zacznij</button>
+          <button disabled={false}>Zacznij</button>
         </div>
       )
     }
