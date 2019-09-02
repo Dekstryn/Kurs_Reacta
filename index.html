@@ -108,12 +108,18 @@
       title: "Uczę się o kontrolowanych elementach",
       totalTimeInMinutes: 15
     }
+    handleTitleChange = (event) => {
+      this.setState({title: event.target.value});
+    }
+    handleTotalTimeInMinutesChange = (event) => {
+      this.setState({totalTimeInMinutes: event.target.value});
+    }
     render() {
       const {title, totalTimeInMinutes} = this.state;
       return(
         <div className="TimeboxEditor">
-          <label>Co robisz?<input disable={false} value={title} type="text" /></label><br />
-          <label>Ile minut?<input disable={false} value={totalTimeInMinutes} type="number" /></label><br />
+          <label>Co robisz?<input disable={false} value={title} onChange={this.handleTitleChange} type="text" /></label><br />
+          <label>Ile minut?<input disable={false} value={totalTimeInMinutes} onChange={this.handleTotalTimeInMinutesChange} type="number" /></label><br />
           <button disabled>Zacznij</button>
         </div>
       )
