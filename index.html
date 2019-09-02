@@ -103,14 +103,21 @@
       return <h2 className = {"Clock" + className}> Pozostało {hours}:{minutes}:{seconds}</h2>
   }
 
-  function TimeboxEditor(){
-    return(
-      <div className="TimeboxEditor">
-        <label>Co robisz?<input disable={false} value="Uczę się skrótów klawiszowych" type="text" /></label><br />
-        <label>Ile minut?<input disable={false} value="25" type="number" /></label><br />
-        <button disabled>Zacznij</button>
-      </div>
-    )
+  class TimeboxEditor extends React.Component(){
+    state = {
+      title: "Uczę się o kontrolowanych elementach",
+      totalTimeInMinutes: 15
+    }
+    render() {
+      const {title, totalTimeInMinutes} = this.state;
+      return(
+        <div className="TimeboxEditor">
+          <label>Co robisz?<input disable={false} value={title} type="text" /></label><br />
+          <label>Ile minut?<input disable={false} value={totalTimeInMinutes} type="number" /></label><br />
+          <button disabled>Zacznij</button>
+        </div>
+      )
+    }
   }
 
   function ProgressBar({className = "", percent = 33, fullPercent = 100, trackRemaining = false}) {
