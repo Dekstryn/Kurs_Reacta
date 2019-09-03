@@ -111,9 +111,11 @@
     }
     handleTitleChange = (event) => {
       this.setState({title: event.target.value});
+      this.props.onTitleChange(event);
     }
     handleTotalTimeInMinutesChange = (event) => {
       this.setState({totalTimeInMinutes: event.target.value});
+      this.props.onTotalTimeInMinutesChange(event);
     }
     render() {
       const {title, totalTimeInMinutes} = this.state;
