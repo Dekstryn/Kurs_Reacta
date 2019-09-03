@@ -227,6 +227,12 @@
       title: "Uczę się wyciągać stan w górę",
       totalTimeInMinutes: 1
     }
+    handleTitleChange = (event) => {
+      this.setState({title: event.target.value});
+    }
+    handleTotalTimeInMinutesChange =(event) => {
+      this.setState({totalTimeInMinutes: event.target.value});
+    }
     render(){
       const {title, totalTimeInMinutes} = this.state;
       return(
