@@ -108,14 +108,16 @@
     const {
       title, 
       totalTimeInMinutes,
+      isEditable,
       onTitleChange,
-      onTotalTimeInMinutesChange
+      onTotalTimeInMinutesChange,
+      onConfirm
       } = props;
     return(
-      <div className="TimeboxEditor">
-        <label>Co robisz?<input disable={false} value={title} onChange={onTitleChange} type="text" /></label><br />
-        <label>Ile minut?<input disable={false} value={totalTimeInMinutes} onChange={onTotalTimeInMinutesChange} type="number" /></label><br />
-        <button disabled={false}>Zacznij</button>
+      <div className={`TimeboxEditor ${!isEditable ? "" : "inactive"}`}>
+        <label>Co robisz?<input disable={!isEditable} value={title} onChange={onTitleChange} type="text" /></label><br />
+        <label>Ile minut?<input disable={!isEditable} value={totalTimeInMinutes} onChange={onTotalTimeInMinutesChange} type="number" /></label><br />
+        <button onClick={onConfirm} disabled={!isEditable}>Zatwierdź zmiany</button>
       </div>
     )
   }
@@ -218,7 +220,8 @@
   class EditableTimebox extends React.Component{
     state = {
       title: "Uczę się wyciągać stan w górę",
-      totalTimeInMinutes: 1
+      totalTimeInMinutes: 1,
+      isEditable: true
     }
     handleTitleChange = (event) => {
       this.setState({title: event.target.value});
@@ -226,13 +229,18 @@
     handleTotalTimeInMinutesChange =(event) => {
       this.setState({totalTimeInMinutes: event.target.value});
     }
+    handleConfirm = () => {
+      this.setState({isEditable: false});
+    }
     render(){
-      const {title, totalTimeInMinutes} = this.state;
+      const {title, totalTimeInMinutes, isEditable} = this.state;
       return(
         <React.Fragment>
           <TimeboxEditor
             title={title} 
             totalTimeInMinutes={totalTimeInMinutes}
+            isEditable={isEditable}
+            onConfirm={this.handleConfirm}
             onTitleChange={this.handleTitleChange}
             onTotalTimeInMinutesChange={this.handleTotalTimeInMinutesChange}
              />
