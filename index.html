@@ -200,7 +200,7 @@
     }
     render(){
       const {isPaused, isRunning, pausesCount, elapsedTimeInMiliseconds} = this.state;
-      const totalTimeInMinutes = 1;
+      const {title, totalTimeInMinutes} = this.props;
       const totalTimeInMiliseconds = totalTimeInMinutes * 6000;
       const timeLeftInMiliseconds = totalTimeInMiliseconds - elapsedTimeInMiliseconds;
       const hoursLeft = Math.floor(timeLeftInMiliseconds/360000);
@@ -210,7 +210,7 @@
       const progressInPercent = (elapsedTimeInMiliseconds / totalTimeInMiliseconds) * 100.0;
       return(
         <div className="Timebox">
-          <h1>Uczę się skrótów klawiszowych</h1>
+          <h1>{title}</h1>
           <Clock hours={hoursLeft} minutes={minutesLeft} seconds={secondsLeft} miliseconds={milisecondsleft} className={isPaused ? " inactive" : ""}/>
           <ProgressBar percent={progressInPercent} className={isPaused ? " inactive" : ""}/>
           <button onClick={this.handleStart} disabled = {isRunning}>Start</button>
