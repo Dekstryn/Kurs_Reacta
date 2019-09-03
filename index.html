@@ -195,7 +195,7 @@
     }
     render(){
       const {isPaused, isRunning, pausesCount, elapsedTimeInMiliseconds} = this.state;
-      const {title, totalTimeInMinutes} = this.props;
+      const {title, totalTimeInMinutes, isEditable, onEdit} = this.props;
       const totalTimeInMiliseconds = totalTimeInMinutes * 6000;
       const timeLeftInMiliseconds = totalTimeInMiliseconds - elapsedTimeInMiliseconds;
       const hoursLeft = Math.floor(timeLeftInMiliseconds/360000);
@@ -204,10 +204,11 @@
       const milisecondsleft = Math.floor(timeLeftInMiliseconds-(hoursLeft * 360000 + minutesLeft * 6000 + secondsLeft * 100));
       const progressInPercent = (elapsedTimeInMiliseconds / totalTimeInMiliseconds) * 100.0;
       return(
-        <div className="Timebox">
+        <div className={`Timebox ${!isEditable ? "inactive" : ""}`}>
           <h1>{title}</h1>
           <Clock hours={hoursLeft} minutes={minutesLeft} seconds={secondsLeft} miliseconds={milisecondsleft} className={isPaused ? " inactive" : ""}/>
           <ProgressBar percent={progressInPercent} className={isPaused ? " inactive" : ""}/>
+          <button onClick={onEdit} disabled = {isEditable}>Edytuj</button>
           <button onClick={this.handleStart} disabled = {isRunning}>Start</button>
           <button onClick={this.handleStop} disabled = {!isRunning}>Reset</button>
           <button onClick={this.togglePause} disabled = {!isRunning}>{isPaused ? "Wznów" : "Pauza"}</button>
@@ -232,6 +233,9 @@
     handleConfirm = () => {
       this.setState({isEditable: false});
     }
+    handleEdit = () => {
+      this.setState({isEditable: true});
+    }
     render(){
       const {title, totalTimeInMinutes, isEditable} = this.state;
       return(
@@ -244,7 +248,12 @@
             onTitleChange={this.handleTitleChange}
             onTotalTimeInMinutesChange={this.handleTotalTimeInMinutesChange}
              />
-          <Timebox title={title} totalTimeInMinutes={totalTimeInMinutes} />
+          <Timebox 
+            isEditable={isEditable}
+            title={title}
+            totalTimeInMinutes={totalTimeInMinutes}
+            onEdit={this.handleEdit}
+           />
         </React.Fragment>
       )
     }
