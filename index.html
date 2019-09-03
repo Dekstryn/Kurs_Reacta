@@ -237,7 +237,10 @@
       const {title, totalTimeInMinutes} = this.state;
       return(
         <React.Fragment>
-          <TimeboxEditor />
+          <TimeboxEditor 
+            onTitleChange={this.handleTitleChange}
+            onTotalTimeInMinutesChange={this.handleTotalTimeInMinutesChange}
+             />
           <Timebox title={title} totalTimeInMinutes={totalTimeInMinutes} />
         </React.Fragment>
       )
