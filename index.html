@@ -228,10 +228,13 @@
       totalTimeInMinutes: 1
     }
     render(){
-      <React.Fragment>
-        <TimeboxEditor />
-        <Timebox title={title} totalTimeInMinutes={totalTimeInMinutes} />
-      </React.Fragment>
+      const {title, totalTimeInMinutes} = this.state;
+      return(
+        <React.Fragment>
+          <TimeboxEditor />
+          <Timebox title={title} totalTimeInMinutes={totalTimeInMinutes} />
+        </React.Fragment>
+      )
     }
   }
   function App(){
