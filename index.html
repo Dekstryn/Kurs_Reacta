@@ -183,15 +183,20 @@
       window.clearInterval(this.intervalId)
     }
     togglePause() {
-      this.setState(
-        function(prevState) {
-          const isPaused = !prevState.isPaused;
-          return {
-            isPaused,
-            pausesCount: isPaused ? prevState.pausesCount + 1 : prevState.pausesCount,
-          }
-        }
-      )
+        this.setState(
+            function(prevState) {
+                const isPaused = !prevState.isPaused;
+                if (isPaused) {
+                    this.stopTimer();
+                } else {
+                    this.startTimer();
+                }
+                return {
+                    isPaused,
+                    pausesCount: isPaused ? prevState.pausesCount + 1 : prevState.pausesCount
+                }
+            }
+        )
     }
     render(){
       const {isPaused, isRunning, pausesCount, elapsedTimeInMiliseconds} = this.state;
