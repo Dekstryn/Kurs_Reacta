@@ -114,7 +114,7 @@
       onConfirm
       } = props;
     return(
-      <div className={`TimeboxEditor ${!isEditable ? "" : "inactive"}`}>
+      <div className={`TimeboxEditor ${isEditable ? "" : "inactive"}`}>
         <label>Co robisz?<input disable={!isEditable} value={title} onChange={onTitleChange} type="text" /></label><br />
         <label>Ile minut?<input disable={!isEditable} value={totalTimeInMinutes} onChange={onTotalTimeInMinutesChange} type="number" /></label><br />
         <button onClick={onConfirm} disabled={!isEditable}>Zatwierdź zmiany</button>
@@ -204,7 +204,7 @@
       const milisecondsleft = Math.floor(timeLeftInMiliseconds-(hoursLeft * 360000 + minutesLeft * 6000 + secondsLeft * 100));
       const progressInPercent = (elapsedTimeInMiliseconds / totalTimeInMiliseconds) * 100.0;
       return(
-        <div className={`Timebox ${!isEditable ? "inactive" : ""}`}>
+        <div className={`Timebox ${isEditable ? "inactive" : ""}`}>
           <h1>{title}</h1>
           <Clock hours={hoursLeft} minutes={minutesLeft} seconds={secondsLeft} miliseconds={milisecondsleft} className={isPaused ? " inactive" : ""}/>
           <ProgressBar percent={progressInPercent} className={isPaused ? " inactive" : ""}/>
@@ -220,8 +220,8 @@
   }
   class EditableTimebox extends React.Component{
     state = {
-      title: "Uczę się wyciągać stan w górę",
-      totalTimeInMinutes: 1,
+      title: "Test",
+      totalTimeInMinutes: 5,
       isEditable: true
     }
     handleTitleChange = (event) => {
