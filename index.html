@@ -60,57 +60,44 @@
 </body>
 <script type="text/babel">
     
- class Clock extends React.Component {
-    constructor(props){
-      super(props)
-      this.state={
-      className: props.className,
-      hoursLeft: (Math.floor(props.timeLeftInMiliseconds/360000)),
-      minutesLeft: (Math.floor((props.timeLeftInMiliseconds-((props.timeLeftInMiliseconds/360000) * 360000))/6000)),
-      secondsLeft: (Math.floor((props.timeLeftInMiliseconds-((props.timeLeftInMiliseconds/360000) * 360000 + ((props.timeLeftInMiliseconds-((props.timeLeftInMiliseconds/360000) * 360000))/6000) * 6000))/100)),
-      milisecondsleft: (Math.floor(props.timeLeftInMiliseconds-((props.timeLeftInMiliseconds/360000) * 360000 + ((props.timeLeftInMiliseconds-((props.timeLeftInMiliseconds/360000) * 360000))/6000) * 6000 + ((props.timeLeftInMiliseconds-((props.timeLeftInMiliseconds/360000) * 360000 + ((props.timeLeftInMiliseconds-((props.timeLeftInMiliseconds/360000) * 360000))/6000) * 6000))/100) * 100)))
-      }
-    }
-  /*
-    //Normalizing hours display
-      if (hoursLeft} < 0)
-        {hoursLeft = 0}
-      else if (hoursLeft > 24)
-        {hoursLeft = 24}
-      else if (hoursLeft < 10)
-        {hoursLeft = "0" + hoursLeft}
+function Clock({className = ""}, hours = hoursLeft, minutes = minutesLeft, seconds = secondsLeft, miliseconds = milisecondsleft) {
+
+  //Normalizing hours display
+    if (hours < 0)
+      {hours = 0}
+    else if (hours > 24)
+      {hours = 24}
+    else if (hours < 10)
+      {hours = "0" + hours}
   
-      //Normalizing minutes display
-        if (minutesLeft < 0)
-          {minutesLeft = 0}
-        else if (minutesLeft > 59)
-          {minutesLeft = 59}
-        else if (minutesLeft < 10)
-          {minutesLeft = "0" + minutesLeft}
+  //Normalizing minutes display
+    if (minutes < 0)
+      {minutes = 0}
+    else if (minutes > 59)
+      {minutes = 59}
+    else if (minutes < 10)
+      {minutes = "0" + minutes}
 
-      //Normalizing seconds display
-      if (secondsLeft < 0)
-          {secondsLeft = 0}
-        else if (secondsLeft > 59)
-          {secondsLeft = 59}
-        else if (secondsLeft < 10)
-          {secondsLeft = "0" + secondsLeft}
+  //Normalizing seconds display
+  if (seconds < 0)
+      {seconds = 0}
+    else if (seconds > 59)
+      {seconds = 59}
+    else if (seconds < 10)
+      {seconds = "0" + seconds}
 
-      //Normalizing miliseconds display
-      if (milisecondsleft < 0)
-          {milisecondsleft = "000"}
-        else if (milisecondsleft > 999)
-          {milisecondsleft = 999}
-        else if (milisecondsleft < 10)
-          {milisecondsleft = "00" + milisecondsleft}
-        else if (milisecondsleft < 100)
-          {milisecondsleft = "0" + milisecondsleft}
-    */
-    render(){
-      
-      return <h2 className = {"Clock" + this.state.className}> Pozostało {this.state.hoursLeft}:{this.state.minutesLeft}:{this.state.secondsLeft}:{this.state.milisecondsleft}</h2>
-    }
-  }
+  //Normalizing miliseconds display
+  if (miliseconds < 0)
+      {miliseconds = "000"}
+    else if (miliseconds > 999)
+      {miliseconds = 999}
+    else if (miliseconds < 10)
+      {miliseconds = "00" + miliseconds}
+    else if (miliseconds < 100)
+      {miliseconds = "0" + miliseconds}
+
+    return <h2 className = {"Clock" + className}> Pozostało {hours}:{minutes}:{seconds}:{miliseconds}</h2>
+}
 
 
   class TimeboxEditor extends React.Component{
@@ -157,10 +144,14 @@
       const totalTimeInMiliseconds = totalTimeInMinutes * 6000;
       const timeLeftInMiliseconds = totalTimeInMiliseconds - elapsedTimeInMiliseconds;
       const progressInPercent = (elapsedTimeInMiliseconds / totalTimeInMiliseconds) * 100.0;
+      const hoursLeft = Math.floor(timeLeftInMiliseconds/360000);
+      const minutesLeft = Math.floor((timeLeftInMiliseconds-((timeLeftInMiliseconds/360000) * 360000))/6000);
+      const secondsLeft = Math.floor((timeLeftInMiliseconds-((timeLeftInMiliseconds/360000) * 360000 + ((timeLeftInMiliseconds-((timeLeftInMiliseconds/360000) * 360000))/6000) * 6000))/100);
+      const milisecondsleft = Math.floor(timeLeftInMiliseconds-((timeLeftInMiliseconds/360000) * 360000 + ((timeLeftInMiliseconds-((timeLeftInMiliseconds/360000) * 360000))/6000) * 6000 + ((timeLeftInMiliseconds-((timeLeftInMiliseconds/360000) * 360000 + ((timeLeftInMiliseconds-((timeLeftInMiliseconds/360000) * 360000))/6000) * 6000))/100) * 100));
       return(
         <div className={`Timebox ${isEditable ? "inactive" : ""}`}>
           <h1>{title}</h1>
-          <Clock timeLeftInMiliseconds={timeLeftInMiliseconds} className={isPaused ? " inactive" : ""}/>
+          <Clock className={isPaused ? " inactive" : ""} hoursLeft={hoursLeft} minutesLeft={minutesLeft} secondsLeft={secondsLeft} milisecondsleft={milisecondsleft}/>
           <ProgressBar percent={progressInPercent} className={isPaused ? " inactive" : ""}/>
           <button onClick={onEdit} disabled = {isEditable}>Edytuj</button>
           <button onClick={onStart} disabled = {isRunning}>Start</button>
