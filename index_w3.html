@@ -213,7 +213,7 @@
     }
 
     render(){
-      const {title, totalTimeInMinutes, isEditable, isRunning, elapsedTimeInMiliseconds} = this.state;
+      const {title, totalTimeInMinutes, isEditable, isRunning, elapsedTimeInMiliseconds, pausesCount} = this.state;
       return(
         <React.Fragment>
           <TimeboxEditor
@@ -231,6 +231,7 @@
             title={title}
             totalTimeInMinutes={totalTimeInMinutes}
             elapsedTimeInMiliseconds={elapsedTimeInMiliseconds}
+            pausesCount={pausesCount}
             onEdit={this.handleEdit}
             onStart={this.handleStart}
             onStop={this.handleStop}
